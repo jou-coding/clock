@@ -4,37 +4,13 @@ const second = document.getElementById("second") as HTMLSpanElement;
 const btn = document.getElementById("btn") as HTMLButtonElement;
 
 btn.addEventListener("click", () => {
-  hourInteraval();
-  minInteraval();
-  secInteraval();
+  updateClock();
+  setInterval(updateClock, 1000);
 });
 
-async function hourInteraval() {
-  await new Promise<void>((resolved) => {
-    setInterval(() => {
-      const hoge = new Date();
-      hour.textContent = String(hoge.getHours());
-      resolved();
-    }, 1000);
-  });
-}
-
-async function minInteraval() {
-  await new Promise<void>((resolved) => {
-    setInterval(() => {
-      const hoge = new Date();
-      min.textContent = String(hoge.getMinutes());
-      resolved();
-    }, 1000);
-  });
-}
-
-async function secInteraval() {
-  await new Promise<void>((resolved) => {
-    setInterval(() => {
-      const hoge = new Date();
-      second.textContent = String(hoge.getSeconds());
-      resolved();
-    }, 1000);
-  });
+function updateClock() {
+  const date = new Date();
+  hour.textContent = String(date.getHours());
+  min.textContent = String(date.getMinutes());
+  second.textContent = String(date.getSeconds());
 }
