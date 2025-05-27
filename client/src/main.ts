@@ -4,8 +4,11 @@ const second = document.getElementById("second") as HTMLSpanElement;
 const btn = document.getElementById("btn") as HTMLButtonElement;
 
 btn.addEventListener("click", () => {
-  updateClock();
-  setInterval(updateClock, 1000);
+  const delay = 1000 - (Date.now() % 1000);
+  setTimeout(() => {
+    updateClock();
+    setInterval(updateClock, 1000);
+  }, delay);
 });
 
 function updateClock() {
