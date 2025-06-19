@@ -45,12 +45,10 @@ function setUp() {
       min.textContent = "";
       hour.textContent = "";
       second.textContent = "";
-      console.log(min);
+      time.clearTime();
     }
-
-    time.clearTime();
-    time.setTime();
   });
+  time.setTime();
 }
 
 function main() {
