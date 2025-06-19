@@ -42,12 +42,22 @@ function setUp() {
   //ボタンクリック関数
   btn?.addEventListener("click", () => {
     if (min && hour && second) {
-      min.textContent = "";
-      hour.textContent = "";
-      second.textContent = "";
-      time.clearTime();
+      if (btn.textContent === "隠す") {
+        min.textContent = "";
+        hour.textContent = "";
+        second.textContent = "";
+        time.clearTime();
+        btn.textContent = "表示";
+      } else if (btn.textContent === "表示") {
+        time.setTime();
+        btn.textContent = "隠す";
+      }
     }
   });
+  if (btn) {
+    btn.textContent = "隠す";
+  }
+
   time.setTime();
 }
 
