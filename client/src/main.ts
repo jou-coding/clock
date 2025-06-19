@@ -1,12 +1,30 @@
-function setUp() {
-  // ID省略関数
-  function $(id: string) {
-    const id1 = document.getElementById(id);
-    return id1;
-  }
+function main() {
+  setUp();
+}
 
+// ID省略関数
+function $(id: string): HTMLElement | null {
+  const id1 = document.getElementById(id);
+  return id1;
+}
+
+function setUp() {
+  const min = $("min");
+  const hour = $("hour");
+  const second = $("second");
+  const btn = $("btn");
+
+  //アップデート関数
+  function updateClock() {
+    if (hour && min && second) {
+      const date = new Date();
+      hour.textContent = String(date.getHours());
+      min.textContent = String(date.getMinutes());
+      second.textContent = String(date.getSeconds());
+    }
+  }
   //マネージドクラス
-  class manageTime {
+  class ManageTime {
     constructor() {
       this.time = 0;
     }
@@ -22,33 +40,19 @@ function setUp() {
     }
   }
 
-  //アップデート関数
-  function updateClock() {
-    if (hour && min && second) {
-      const date = new Date();
-      hour.textContent = String(date.getHours());
-      min.textContent = String(date.getMinutes());
-      second.textContent = String(date.getSeconds());
-    }
-  }
-
-  const time = new manageTime();
-
-  const min = $("min");
-  const hour = $("hour");
-  const second = $("second");
-  const btn = $("btn");
+  const time = new ManageTime();
 
   //ボタンクリック関数
   btn?.addEventListener("click", () => {
     if (min && hour && second) {
-      if (btn.textContent === "隠す") {
+      const isVisible = btn.textContent === "隠す";
+      if (isVisible) {
         min.textContent = "";
         hour.textContent = "";
         second.textContent = "";
         time.clearTime();
         btn.textContent = "表示";
-      } else if (btn.textContent === "表示") {
+      } else {
         time.setTime();
         btn.textContent = "隠す";
       }
@@ -59,10 +63,6 @@ function setUp() {
   }
 
   time.setTime();
-}
-
-function main() {
-  setUp();
 }
 
 // メインクラス
