@@ -28,3 +28,19 @@ div {
   font-size: 15rem;
   text-align: center;
 }
+
+/* スマホ向けに調整 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  div {
+    font-size: 3rem;
+  }
+}
