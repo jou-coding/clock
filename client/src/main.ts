@@ -1,5 +1,5 @@
-import { Clock } from "./app/clock";
-import { ManageTime } from "./app/manageTime";
+import { Clock } from "./app/Clock";
+import { ManageTime } from "./app/ManageTime";
 import { renderClock } from "./ui/renderClock";
 function main() {
   setUp();
