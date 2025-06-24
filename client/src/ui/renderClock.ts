@@ -1,6 +1,4 @@
-function $(id: string): HTMLElement | null {
-  return document.getElementById(id);
-}
+import { $ } from "../lib/operationDom";
 
 export function renderClock({
   hour,
