@@ -1,6 +1,7 @@
 import { Clock } from "./app/Clock";
 import { ManageTime } from "./app/ManageTime";
-import { modal } from "./ui/modal";
+import { modal } from "./ui/button";
+import { stopButton } from "./ui/button";
 import { renderClock } from "./ui/renderClock";
 function main() {
   setUp();
@@ -13,6 +14,9 @@ function setUp() {
   manage.setTime(() => renderClock(time.getTime()));
   if (modal) {
     modal();
+  }
+  if (stopButton) {
+    stopButton();
   }
 }
 
