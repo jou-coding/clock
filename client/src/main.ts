@@ -1,5 +1,6 @@
 import { Clock } from "./app/Clock";
 import { ManageTime } from "./app/ManageTime";
+import { modal } from "./ui/modal";
 import { renderClock } from "./ui/renderClock";
 function main() {
   setUp();
@@ -10,6 +11,9 @@ function setUp() {
   renderClock(time.getTime());
   const manage = new ManageTime();
   manage.setTime(() => renderClock(time.getTime()));
+  if (modal) {
+    modal();
+  }
 }
 
 // メインクラス

@@ -29,6 +29,37 @@ div {
   text-align: center;
 }
 
+.overlay {
+  display: none; /* 最初は非表示 */
+  font-size: medium;
+}
+
+.modal {
+  display: grid;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+}
+
+input {
+  padding: 1rem;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+h2,
+label {
+  font-size: medium;
+  margin-top: 1rem;
+}
+
+.stop {
+  font-size: 1rem;
+  height: auto;
+  margin-top: 1rem;
+}
+
 /* スマホ向けに調整 */
 @media (max-width: 768px) {
   h1 {
