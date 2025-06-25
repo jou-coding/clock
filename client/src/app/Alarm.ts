@@ -1,13 +1,12 @@
-class Alarm {
+import type { TimeType } from "../types/time";
+export class Alarm {
   private time;
-  private message;
 
-  constructor(time: number, message: string) {
+  constructor(time: TimeType) {
     this.time = time;
-    this.message = message;
   }
 
   get() {
-    return this.time, this.message;
+    return { day: this.time.day, hour: this.time.hour, min: this.time.min };
   }
 }

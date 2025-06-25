@@ -1,7 +1,9 @@
 import { $ } from "../lib/operationDom";
+import type { TimeType } from "../types/time";
 const btn = $("btn");
 const modalOverlay = $("modalOverlay");
 const stop = $("stop");
+const submit = $("submit");
 
 export function modal(): void {
   btn?.addEventListener("click", () => {
@@ -15,6 +17,24 @@ export function stopButton(): void {
   stop?.addEventListener("click", () => {
     if (modalOverlay) {
       modalOverlay.style.display = "none";
+    }
+  });
+}
+
+export function submitButton(onSubmit: (time: TimeType) => void): void {
+  submit?.addEventListener("click", () => {
+    const day = $("getDay");
+    const hour = $("getHour");
+    const min = $("getMin");
+    //例としてtimeオブジェクト作成
+    if (day && hour && min) {
+      const time = {
+        day: day.value,
+        hour: Number(hour.value),
+        min: min.value,
+      };
+
+      onSubmit(time);
     }
   });
 }
