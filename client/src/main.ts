@@ -1,6 +1,7 @@
 import { Alarm } from "./app/Alarm";
 import { Clock } from "./app/Clock";
 import { ManageTime } from "./app/ManageTime";
+import { AlarmList } from "./ui/alarmList";
 import { modal, submitButton, stopButton } from "./ui/button";
 
 import { renderClock } from "./ui/renderClock";
@@ -19,13 +20,12 @@ function setUp() {
   if (stopButton) {
     stopButton();
   }
-  if (submitButton) {
-    const time = submitButton((time) => {
-      console.log(`${JSON.stringify(time)}`);
-      const alarm = new Alarm(time);
-      console.log(`${JSON.stringify(alarm.get())}`);
-    });
-  }
+
+  submitButton((time) => {
+    const alarm = new Alarm(time);
+    console.log(`${JSON.stringify(alarm.get())}`);
+    AlarmList(alarm.get());
+  });
 }
 
 // メインクラス

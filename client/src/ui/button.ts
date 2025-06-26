@@ -29,9 +29,9 @@ export function submitButton(onSubmit: (time: TimeType) => void): void {
     //例としてtimeオブジェクト作成
     if (day && hour && min) {
       const time = {
-        day: day.value,
+        day: Number(day.value),
         hour: Number(hour.value),
-        min: min.value,
+        min: Number(min.value),
       };
 
       onSubmit(time);
