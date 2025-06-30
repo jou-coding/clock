@@ -9,4 +9,18 @@ export class Alarm {
   get() {
     return { day: this.time.day, hour: this.time.hour, min: this.time.min };
   }
+
+  equal(time: TimeType) {
+    const alarm = new Date(2025, 5, time.day, time.hour, time.min);
+    const interavalId = setInterval(() => {
+      const now = new Date();
+      console.log("まだ実行中");
+
+      if (now.getTime() >= alarm.getTime()) {
+        clearInterval(interavalId);
+        console.log("インターバルを停止しました。");
+        console.log("プログラムを終了します。");
+      }
+    }, 1000);
+  }
 }

@@ -25,6 +25,7 @@ function setUp() {
     const alarm = new Alarm(time);
     console.log(`${JSON.stringify(alarm.get())}`);
     AlarmList(alarm.get());
+    alarm.equal(alarm.get());
   });
 }
 
