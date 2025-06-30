@@ -33,3 +33,14 @@ client/
 └── src/
     └── main.ts
 ```
+
+## アラーム音について
+
+このアプリケーションでは、Pixabay から取得した音源をアラームとして使用しています。
+
+- 曲名: Relaxing
+- 作者: Music_For_Videos
+- 配布元: https://pixabay.com/music/modern-classical-relaxing-145038/
+- ライセンス: Pixabay ライセンス（商用・非商用問わず使用可、クレジット不要）
+
+※ 音源ファイルは `./public/alarm.mp3` に配置されています。
