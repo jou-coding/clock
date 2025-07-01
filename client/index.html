@@ -4,19 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>時計アプリ</title>
-    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
   </head>
   <body>
     <h1>時計アプリ</h1>
+
     <div>
       <span id="hour"></span>:<span id="min"></span>:<span id="second"></span>
     </div>
 
     <div>
       <button id="btn">アラーム追加</button>
-      <ul id="alarmlist">
-        
-      </ul>
+      <ul id="alarmlist"></ul>
     </div>
     <div class="overlay" id="modalOverlay">
       <div class="modal">
@@ -32,6 +31,6 @@
       </div>
     </div>
 
-    <script type="module" src="main.ts"></script>
+    <script type="module" src="./src/main.ts"></script>
   </body>
 </html>
