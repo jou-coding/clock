@@ -11,7 +11,14 @@ export class Alarm {
   }
 
   equal(time: TimeType) {
-    const alarm = new Date(2025, 6, time.day, time.hour, time.min);
+    const settingTime = new Date();
+    const alarm = new Date(
+      settingTime.getFullYear(),
+      settingTime.getMonth(),
+      time.day,
+      time.hour,
+      time.min
+    );
     const interavalId = setInterval(() => {
       const now = new Date();
       console.log("まだ実行中");
