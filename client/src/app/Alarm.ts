@@ -7,7 +7,7 @@ export class Alarm {
   }
 
   get() {
-    return { day: this.time.day, hour: this.time.hour, min: this.time.min };
+    return { hour: this.time.hour, min: this.time.min };
   }
 
   equal(time: TimeType) {
@@ -15,7 +15,7 @@ export class Alarm {
     const alarm = new Date(
       settingTime.getFullYear(),
       settingTime.getMonth(),
-      time.day,
+      settingTime.getDate(),
       time.hour,
       time.min
     );

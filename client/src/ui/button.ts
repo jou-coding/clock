@@ -23,13 +23,11 @@ export function stopButton(): void {
 
 export function submitButton(onSubmit: (time: TimeType) => void): void {
   submit?.addEventListener("click", () => {
-    const day = $("getDay");
     const hour = $("getHour");
     const min = $("getMin");
     //例としてtimeオブジェクト作成
-    if (day && hour && min) {
+    if (hour && min) {
       const time = {
-        day: Number(day.value),
         hour: Number(hour.value),
         min: Number(min.value),
       };
