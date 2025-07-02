@@ -60,6 +60,47 @@ label {
   margin-top: 1rem;
 }
 
+#alarmlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.alarm-card {
+  border: 1px solid black;
+  height: auto;
+  width: 18rem;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  align-items: center;
+  gap: 1rem;
+}
+
+.alarm-time {
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 3.5rem;
+}
+
+.alarm-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.delete-button {
+  background: red;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: large;
+}
+
 /* スマホ向けに調整 */
 @media (max-width: 768px) {
   h1 {

@@ -3,9 +3,25 @@ import type { TimeType } from "../types/time";
 
 const alarm = $("alarmlist");
 
+//アラームを管理するカードづくり
 export function AlarmList(time: TimeType) {
-  console.log(`引数:${JSON.stringify(time)}`);
-  const li = document.createElement("li");
-  li.textContent = `時間:${time.hour},分:${time.min}`;
-  alarm?.append(li);
+  const card = document.createElement("div");
+  card?.classList.add("alarm-card");
+  const clock = document.createElement("div");
+  clock.classList.add("alarm-time");
+  clock.textContent = `時間:${time.hour},分:${time.min}`;
+  const actions = document.createElement("div");
+  actions.classList.add("alarm-actions");
+  const input = document.createElement("input");
+  input.type = "checkbox";
+  input.checked = true;
+  const btn = document.createElement("button");
+  btn?.classList.add("delete-button");
+  btn.type = "button";
+  btn.textContent = "削除";
+  alarm?.append(card);
+  card?.append(clock);
+  card.append(actions);
+  actions.append(input);
+  actions.append(btn);
 }
