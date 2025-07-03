@@ -4,6 +4,7 @@ const btn = $("btn");
 const modalOverlay = $("modalOverlay");
 const stop = $("stop");
 const submit = $("submit");
+const alarmlist = $("alarmlist");
 
 export function modal(): void {
   btn?.addEventListener("click", () => {
@@ -33,6 +34,18 @@ export function submitButton(onSubmit: (time: TimeType) => void): void {
       };
 
       onSubmit(time);
+    }
+  });
+}
+
+//　例えば、alarmListにイベント登録
+export function deleteButton(): void {
+  alarmlist?.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+
+    if (target?.classList.contains("delete-button")) {
+      const card = target.parentElement?.parentElement;
+      card?.remove();
     }
   });
 }

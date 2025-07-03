@@ -2,8 +2,7 @@ import { Alarm } from "./app/Alarm";
 import { Clock } from "./app/Clock";
 import { ManageTime } from "./app/ManageTime";
 import { AlarmList } from "./ui/alarmList";
-import { modal, submitButton, stopButton } from "./ui/button";
-
+import { modal, submitButton, stopButton, deleteButton } from "./ui/button";
 import { renderClock } from "./ui/renderClock";
 function main() {
   setUp();
@@ -27,6 +26,8 @@ function setUp() {
     AlarmList(alarm.get());
     alarm.equal(alarm.get());
   });
+
+  deleteButton();
 }
 
 // メインクラス

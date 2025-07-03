@@ -5,8 +5,9 @@ const alarm = $("alarmlist");
 
 //アラームを管理するカードづくり
 export function AlarmList(time: TimeType) {
+  const num = Math.ceil(Math.random() * 1000);
   const card = document.createElement("div");
-  card?.classList.add("alarm-card");
+  card?.classList.add("alarm-card", `${num}`);
   const clock = document.createElement("div");
   clock.classList.add("alarm-time");
   clock.textContent = `時間:${time.hour},分:${time.min}`;
