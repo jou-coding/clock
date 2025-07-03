@@ -29,6 +29,12 @@ export class Alarm {
         console.log("プログラムを終了します。");
         const audio = new Audio("alarm.mp3");
         audio.play();
+
+        //5秒後停止
+        setTimeout(() => {
+          audio.pause();
+          audio.currentTime = 0; //再生位置を先頭にするから
+        }, 5000);
       }
     }, 1000);
   }
