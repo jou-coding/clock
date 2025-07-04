@@ -1,16 +1,31 @@
 import type { TimeType } from "../types/time";
+import type { AlarmManager } from "./AlarmManager";
 export class Alarm {
+  private id;
   private time;
+  private isActive;
 
-  constructor(time: TimeType) {
+  constructor(id: string, time: TimeType) {
+    this.id = id;
     this.time = time;
+    this.isActive = true;
   }
 
+  getId() {
+    return this.id;
+  }
   get() {
     return { hour: this.time.hour, min: this.time.min };
   }
 
-  equal(time: TimeType) {
+  getIsActive() {
+    return this.isActive;
+  }
+  toggleActive() {
+    this.isActive = !this.isActive;
+  }
+
+  equal(time: TimeType, id: string, alarmManager: AlarmManager) {
     const settingTime = new Date();
     const alarm = new Date(
       settingTime.getFullYear(),
@@ -22,19 +37,21 @@ export class Alarm {
     const interavalId = setInterval(() => {
       const now = new Date();
       console.log("まだ実行中");
+      const alarm01 = alarmManager.getAlarm(id);
 
       if (now.getTime() >= alarm.getTime()) {
         clearInterval(interavalId);
         console.log("インターバルを停止しました。");
         console.log("プログラムを終了します。");
-        const audio = new Audio("alarm.mp3");
-        audio.play();
-
-        //5秒後停止
-        setTimeout(() => {
-          audio.pause();
-          audio.currentTime = 0; //再生位置を先頭にするから
-        }, 5000);
+        if (alarm01?.getIsActive() === true) {
+          const audio = new Audio("alarm.mp3");
+          audio.play();
+          //5秒後停止
+          setTimeout(() => {
+            audio.pause();
+            audio.currentTime = 0; //再生位置を先頭にするから
+          }, 100000);
+        }
       }
     }, 1000);
   }

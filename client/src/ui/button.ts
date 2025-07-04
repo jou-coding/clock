@@ -1,3 +1,4 @@
+import { AlarmManager } from "../app/AlarmManager";
 import { $ } from "../lib/operationDom";
 import type { TimeType } from "../types/time";
 const btn = $("btn");
@@ -46,6 +47,20 @@ export function deleteButton(): void {
     if (target?.classList.contains("delete-button")) {
       const card = target.parentElement?.parentElement;
       card?.remove();
+    }
+  });
+}
+
+export function checkedBox(alarmManager: AlarmManager): void {
+  alarmlist?.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const className = target.parentElement?.parentElement;
+
+    if (className?.classList[1] !== undefined) {
+      const alarm = alarmManager.getAlarm(className?.classList[1]);
+      console.log("アラームインスタンス:", alarm);
+      console.log(alarm?.getIsActive());
+      alarm?.toggleActive();
     }
   });
 }
