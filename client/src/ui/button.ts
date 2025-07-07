@@ -53,6 +53,7 @@ export function deleteButton(): void {
   });
 }
 
+//　アラームインスタンスを復元するための型
 type alarmdemo = {
   id: string;
   time: TimeType;
