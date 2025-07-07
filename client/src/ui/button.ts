@@ -46,10 +46,18 @@ export function deleteButton(): void {
 
     if (target?.classList.contains("delete-button")) {
       const card = target.parentElement?.parentElement;
+      const id = target.parentElement?.parentElement?.classList[1];
       card?.remove();
+      localStorage.removeItem(String(id));
     }
   });
 }
+
+type alarmdemo = {
+  id: string;
+  time: TimeType;
+  isActive: boolean;
+};
 
 export function checkedBox(alarmManager: AlarmManager): void {
   alarmlist?.addEventListener("click", (e) => {
@@ -57,10 +65,16 @@ export function checkedBox(alarmManager: AlarmManager): void {
     const className = target.parentElement?.parentElement;
 
     if (className?.classList[1] !== undefined) {
-      const alarm = alarmManager.getAlarm(className?.classList[1]);
-      console.log("アラームインスタンス:", alarm);
-      console.log(alarm?.getIsActive());
+      const id = className?.classList[1];
+      const alarm = alarmManager.getAlarm(id);
       alarm?.toggleActive();
+      const data = localStorage.getItem(id);
+      if (typeof data === "string") {
+        const parsedData: alarmdemo = JSON.parse(data);
+        parsedData.isActive = !parsedData.isActive;
+        const sendData = JSON.stringify(parsedData);
+        localStorage.setItem(id, sendData);
+      }
     }
   });
 }

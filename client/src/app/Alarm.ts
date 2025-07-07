@@ -5,10 +5,10 @@ export class Alarm {
   private time;
   private isActive;
 
-  constructor(id: string, time: TimeType) {
+  constructor(id: string, time: TimeType, isActive?: boolean) {
     this.id = id;
     this.time = time;
-    this.isActive = true;
+    this.isActive = isActive ?? true;
   }
 
   getId() {
