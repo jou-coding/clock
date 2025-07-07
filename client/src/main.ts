@@ -62,7 +62,7 @@ function setUp() {
     localStorage.setItem(String(num), JSON.stringify(alarm));
   });
 
-  deleteButton();
+  deleteButton(alarmManager);
   checkedBox(alarmManager);
 }
 

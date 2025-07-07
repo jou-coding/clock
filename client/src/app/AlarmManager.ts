@@ -15,6 +15,10 @@ export class AlarmManager {
     return this.alarms;
   }
 
+  deleteAlarm(id: string) {
+    this.alarms.delete(id);
+  }
+
   getAlarm(id: string): Alarm | undefined {
     if (this.alarms.has(id)) {
       return this.alarms.get(id);

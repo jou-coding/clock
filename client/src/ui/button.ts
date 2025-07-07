@@ -40,7 +40,7 @@ export function submitButton(onSubmit: (time: TimeType) => void): void {
 }
 
 //　例えば、alarmListにイベント登録
-export function deleteButton(): void {
+export function deleteButton(alarmManager: AlarmManager): void {
   alarmlist?.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
 
@@ -49,6 +49,7 @@ export function deleteButton(): void {
       const id = target.parentElement?.parentElement?.classList[1];
       card?.remove();
       localStorage.removeItem(String(id));
+      alarmManager.deleteAlarm(String(id));
     }
   });
 }
