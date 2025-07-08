@@ -1,49 +1,20 @@
-import { Alarm } from "./app/Alarm";
-import { AlarmManager } from "./app/AlarmManager";
 import { Clock } from "./app/Clock";
-import { ManageTime } from "./app/ManageTime";
-import { loadAlarm } from "./lib/loadAlarm";
-import { AlarmList } from "./ui/alarmList";
-import {
-  modal,
-  submitButton,
-  stopButton,
-  deleteButton,
-  checkedBox,
-} from "./ui/button";
+import { AlarmManager } from "./app/AlarmManager";
 import { renderClock } from "./ui/renderClock";
+import { loadAlarm } from "./lib/loadAlarm";
+import { setUpUi } from "./init/setUpUi";
+
 function main() {
-  setUp();
-}
-
-function setUp() {
+  //　時計インスタンスの作成
   const time = new Clock();
+  // アラームの管理インスタンスを作成
   const alarmManager = new AlarmManager();
-
+  // 現在の時刻表示のUIを描画
   renderClock(time.getTime());
-  const manage = new ManageTime();
-  manage.setTime(() => renderClock(time.getTime()));
-  if (modal) {
-    modal();
-  }
-  if (stopButton) {
-    stopButton();
-  }
-
+  //　ローカルストレージから保存されている情報を取得する
   loadAlarm(alarmManager);
-
-  submitButton((time) => {
-    const num = Math.ceil(Math.random() * 1000);
-    const alarm = new Alarm(String(num), time);
-
-    AlarmList(alarm.getId(), alarm.get());
-    alarm.equal(alarm.get(), alarm.getId(), alarmManager);
-    alarmManager.add(alarm);
-    localStorage.setItem(String(num), JSON.stringify(alarm));
-  });
-
-  deleteButton(alarmManager);
-  checkedBox(alarmManager);
+  // 動的なUIのイベント処理を記述している
+  setUpUi(time, alarmManager);
 }
 
 // メインクラス
