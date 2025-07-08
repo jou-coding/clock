@@ -7,25 +7,35 @@
     <link rel="stylesheet" href="./src/styles/main.css" />
   </head>
   <body>
-    <h1>時計アプリ</h1>
-
-    <div>
-      <span id="hour"></span>:<span id="min"></span>:<span id="second"></span>
-    </div>
-    <button id="btn">アラーム追加</button>
-    <div id="alarmlist"></div>
-    <div class="overlay" id="modalOverlay">
-      <div class="modal">
-        <h2>入力フォーム</h2>
-        <label for="hour">時間</label>
-        <input type="number" id="getHour" />
-        <label for="min">分</label>
-        <input type="number" id="getMin" />
-        <button class="submit" id="submit">送信</button>
-        <button class="stop" id="stop">閉じる</button>
+    <div id="container">
+      <h1>時計アプリ</h1>
+      <div id="sidebar">
+        <button id="clock-btn">時計</button>
+        <button id="alarm-btn">アラーム</button>
+      </div>
+      <div id="main">
+        <div id="clock-view" style="display: block">
+          <span id="hour"></span>:<span id="min"></span>:<span
+            id="second"
+          ></span>
+        </div>
+        <div id="alarm-view" style="display: none">
+          <button id="btn">アラーム追加</button>
+          <div id="alarmlist"></div>
+          <div class="overlay" id="modalOverlay">
+            <div class="modal">
+              <h2>入力フォーム</h2>
+              <label for="hour">時間</label>
+              <input type="number" id="getHour" />
+              <label for="min">分</label>
+              <input type="number" id="getMin" />
+              <button class="submit" id="submit">送信</button>
+              <button class="stop" id="stop">閉じる</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
     <script type="module" src="./src/main.ts"></script>
   </body>
 </html>

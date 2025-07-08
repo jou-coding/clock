@@ -11,6 +11,7 @@ import {
   modal,
 } from "../ui/button";
 import { renderClock } from "../ui/renderClock";
+import { changeView } from "../ui/chageView";
 
 export function setUpUi(time: Clock, alarmManager: AlarmManager) {
   const manage = new ManageTime();
@@ -21,6 +22,8 @@ export function setUpUi(time: Clock, alarmManager: AlarmManager) {
   if (stopButton) {
     stopButton();
   }
+
+  changeView();
 
   submitButton((time) => {
     const num = Math.ceil(Math.random() * 1000);
