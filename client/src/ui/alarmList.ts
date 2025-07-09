@@ -9,7 +9,7 @@ export function AlarmList(id: string, time: TimeType) {
   card?.classList.add("alarm-card", `${id}`);
   const clock = document.createElement("div");
   clock.classList.add("alarm-time");
-  clock.textContent = `時間:${time.hour},分:${time.min}`;
+  clock.textContent = `${time.hour}:${time.min}`;
   const actions = document.createElement("div");
   actions.classList.add("alarm-actions");
   const input = document.createElement("input");
