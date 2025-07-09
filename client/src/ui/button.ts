@@ -37,7 +37,7 @@ export function submitButton(onSubmit: (time: TimeType) => void): void {
       onSubmit(time);
     }
     if (modalOverlay) {
-      modalOverlay.style.display = "none";
+      modalOverlay?.classList.remove("active"); // 非表示
     }
   });
 }
