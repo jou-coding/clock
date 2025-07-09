@@ -10,7 +10,7 @@ const alarmlist = $("alarmlist");
 export function modal(): void {
   btn?.addEventListener("click", () => {
     if (modalOverlay) {
-      modalOverlay.style.display = "block";
+      modalOverlay?.classList.add("active"); // 表示
     }
   });
 }
@@ -18,7 +18,7 @@ export function modal(): void {
 export function stopButton(): void {
   stop?.addEventListener("click", () => {
     if (modalOverlay) {
-      modalOverlay.style.display = "none";
+      modalOverlay?.classList.remove("active"); // 非表示
     }
   });
 }
@@ -35,6 +35,9 @@ export function submitButton(onSubmit: (time: TimeType) => void): void {
       };
 
       onSubmit(time);
+    }
+    if (modalOverlay) {
+      modalOverlay.style.display = "none";
     }
   });
 }
