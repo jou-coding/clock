@@ -51,16 +51,22 @@ export function submitButton(onSubmit: (time: TimeType) => void): void {
           modalOverlay.classList.remove("active"); // 非表示
         }
       } else {
-        const index = 5;
-        const parentList = document.getElementsByClassName("modal");
-        const parent = parentList[0];
-        const newElement = document.createElement("div");
-        newElement.textContent =
-          "0～24時間、0から60分以外の数字が入力されている。";
-        newElement.classList.add("error-message");
-        if (!parent) return;
-        const reference = parent?.children[index];
-        parent.insertBefore(newElement, reference ?? null);
+        const message = $("message");
+        if (message !== null) {
+          return;
+        } else {
+          const index = 5;
+          const parentList = document.getElementsByClassName("modal");
+          const parent = parentList[0];
+          const newElement = document.createElement("div");
+          newElement.id = "message";
+          newElement.textContent =
+            "0～24時間、0から60分以外の数字が入力されている。";
+          newElement.classList.add("error-message");
+          if (!parent) return;
+          const reference = parent?.children[index];
+          parent.insertBefore(newElement, reference ?? null);
+        }
       }
     }
   });
