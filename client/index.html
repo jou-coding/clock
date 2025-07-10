@@ -6,6 +6,10 @@
     <title>時計アプリ</title>
     <link rel="stylesheet" href="./src/styles/main.css" />
     <link rel="icon" href="/clockIcon02.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <div id="container">
@@ -21,7 +25,6 @@
           ></span>
         </div>
         <div id="alarm-view" style="display: none">
-          <button id="btn">アラーム追加</button>
           <div id="alarmlist"></div>
           <div class="overlay" id="modalOverlay">
             <div class="modal">
@@ -34,6 +37,7 @@
               <button class="stop" id="stop">閉じる</button>
             </div>
           </div>
+          <button id="btn"><i class="fas fa-plus"></i></button>
         </div>
       </div>
     </div>
