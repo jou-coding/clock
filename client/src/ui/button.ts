@@ -32,20 +32,36 @@ export function submitButton(onSubmit: (time: TimeType) => void): void {
     const min = $("getMin");
     //例としてtimeオブジェクト作成
     if (hour instanceof HTMLInputElement && min instanceof HTMLInputElement) {
-      const hourValue = Number(hour.value);
-      const minValue = Number(min.value);
-      if (hourValue > 12 && minValue > 60) {
+      const hourValue = hour.value;
+      const minValue = min.value;
+
+      const hourValueCheck = /^([0-9]|1[0-9]|2[0-4])$/;
+      const minValueCheck = /^([0-9]|[1-5][0-9]|60)$/;
+
+      if (
+        hourValueCheck.test(hourValue) === true &&
+        minValueCheck.test(minValue) === true
+      ) {
+        const time = {
+          hour: Number(hourValue),
+          min: Number(minValue),
+        };
+        onSubmit(time);
+        if (modalOverlay !== null) {
+          modalOverlay.classList.remove("active"); // 非表示
+        }
+      } else {
+        const index = 5;
+        const parentList = document.getElementsByClassName("modal");
+        const parent = parentList[0];
+        const newElement = document.createElement("div");
+        newElement.textContent =
+          "0～24時間、0から60分以外の数字が入力されている。";
+        newElement.classList.add("error-message");
+        if (!parent) return;
+        const reference = parent?.children[index];
+        parent.insertBefore(newElement, reference ?? null);
       }
-
-      const time = {
-        hour: Number(hour.value),
-        min: Number(min.value),
-      };
-
-      onSubmit(time);
-    }
-    if (modalOverlay !== null) {
-      modalOverlay.classList.remove("active"); // 非表示
     }
   });
 }

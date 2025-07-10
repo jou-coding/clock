@@ -95,7 +95,6 @@ button:hover {
   height: auto;
   margin-top: 1rem;
 }
-
 /* =======================
    モーダル・オーバーレイ
 ======================= */
@@ -169,6 +168,13 @@ button:hover {
   border-radius: 1rem;
   cursor: pointer;
   font-size: large;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0, 2rem;
+  padding: 0.2rem;
 }
 
 /* =======================
