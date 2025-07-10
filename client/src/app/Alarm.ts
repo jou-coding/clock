@@ -43,7 +43,7 @@ export class Alarm {
         clearInterval(interavalId);
         console.log("インターバルを停止しました。");
         console.log("プログラムを終了します。");
-        if (alarm01?.getIsActive() === true) {
+        if (alarm01 !== undefined && alarm01.getIsActive() === true) {
           const audio = new Audio("alarm.mp3");
           audio.play();
           //5秒後停止

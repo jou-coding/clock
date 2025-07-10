@@ -16,12 +16,10 @@ import { changeView } from "../ui/chageView";
 export function setUpUi(time: Clock, alarmManager: AlarmManager) {
   const manage = new ManageTime();
   manage.setTime(() => renderClock(time.getTime()));
-  if (modal) {
-    modal();
-  }
-  if (stopButton) {
-    stopButton();
-  }
+
+  modal();
+
+  stopButton();
 
   changeView();
 

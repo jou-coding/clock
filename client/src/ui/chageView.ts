@@ -8,14 +8,16 @@ export function changeView() {
   const alarmView = $("alarm-view");
 
   // サイドバーのボタン選択の処理
-  clockBtn?.addEventListener("click", () => {
+  if (!clockBtn) return;
+  clockBtn.addEventListener("click", () => {
     if (clockView instanceof HTMLElement && alarmView instanceof HTMLElement) {
       clockView.style.display = "block";
       alarmView.style.display = "none";
     }
   });
 
-  alarmBtn?.addEventListener("click", () => {
+  if (!alarmBtn) return;
+  alarmBtn.addEventListener("click", () => {
     if (clockView instanceof HTMLElement && alarmView instanceof HTMLElement) {
       clockView.style.display = "none";
       alarmView.style.display = "block";
