@@ -10,7 +10,13 @@ export function AlarmList(id: string, time: TimeType) {
   card.classList.add("alarm-card", `${id}`);
   const clock = document.createElement("div");
   clock.classList.add("alarm-time");
-  clock.textContent = `${time.hour}:${time.min}`;
+  if (/^\d$/.test(String(time.min))) {
+    const min = "0" + `${time.min}`;
+    clock.textContent = `${time.hour}:${min}`;
+  } else {
+    clock.textContent = `${time.hour}:${time.min}`;
+  }
+
   const actions = document.createElement("div");
   actions.classList.add("alarm-actions");
   const input = document.createElement("input");
