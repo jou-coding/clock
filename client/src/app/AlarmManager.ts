@@ -16,6 +16,9 @@ export class AlarmManager {
   }
 
   deleteAlarm(id: string) {
+    const childAlarm = this.alarms.get(id);
+    console.log(childAlarm);
+    childAlarm?.stopAudio();
     this.alarms.delete(id);
   }
 

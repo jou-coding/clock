@@ -4,11 +4,13 @@ export class Alarm {
   private id;
   private time;
   private isActive;
+  private audio;
 
   constructor(id: string, time: TimeType, isActive?: boolean) {
     this.id = id;
     this.time = time;
     this.isActive = isActive ?? true;
+    this.audio = new Audio("alarm.mp3");
   }
 
   getId() {
@@ -16,6 +18,15 @@ export class Alarm {
   }
   get() {
     return { hour: this.time.hour, min: this.time.min };
+  }
+
+  ringAudio() {
+    this.audio.play();
+  }
+
+  stopAudio() {
+    this.audio.pause();
+    this.audio.currentTime = 0; //再生位置を先頭にするから
   }
 
   getIsActive() {
@@ -44,12 +55,10 @@ export class Alarm {
         console.log("インターバルを停止しました。");
         console.log("プログラムを終了します。");
         if (alarm01 !== undefined && alarm01.getIsActive() === true) {
-          const audio = new Audio("alarm.mp3");
-          audio.play();
+          this.ringAudio();
           //5秒後停止
           setTimeout(() => {
-            audio.pause();
-            audio.currentTime = 0; //再生位置を先頭にするから
+            this.stopAudio();
           }, 100000);
         }
       }
