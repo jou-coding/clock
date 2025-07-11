@@ -36,32 +36,50 @@ export class Alarm {
     this.isActive = !this.isActive;
   }
 
-  equal(time: TimeType, id: string, alarmManager: AlarmManager) {
+  equal(time: TimeType, id: string, alarmManager: AlarmManager, theDay?: Date) {
     const settingTime = new Date();
-    const alarm = new Date(
-      settingTime.getFullYear(),
-      settingTime.getMonth(),
-      settingTime.getDate(),
-      time.hour,
-      time.min
-    );
-    const interavalId = setInterval(() => {
-      const now = new Date();
-      console.log("まだ実行中");
-      const alarm01 = alarmManager.getAlarm(id);
+    const alarm = theDay
+      ? new Date(theDay)
+      : new Date(
+          settingTime.getFullYear(),
+          settingTime.getMonth(),
+          settingTime.getDate(),
+          time.hour,
+          time.min
+        );
 
-      if (now.getTime() >= alarm.getTime()) {
-        clearInterval(interavalId);
-        console.log("インターバルを停止しました。");
-        console.log("プログラムを終了します。");
-        if (alarm01 !== undefined && alarm01.getIsActive() === true) {
-          this.ringAudio();
-          //5秒後停止
-          setTimeout(() => {
-            this.stopAudio();
-          }, 100000);
+    if (alarm.getTime() < new Date().getTime()) {
+      console.log("過去のアラームなので、スキップof明日に再設定");
+    } else if (alarm.getTime() > new Date().getTime()) {
+      const interavalId = setInterval(() => {
+        const now = new Date();
+        console.log("まだ実行中");
+        const alarm01 = alarmManager.getAlarm(id);
+
+        if (now.getTime() >= alarm.getTime()) {
+          clearInterval(interavalId);
+          console.log("インターバルを停止しました。");
+          console.log("プログラムを終了します。");
+          if (alarm01 !== undefined && alarm01.getIsActive() === true) {
+            this.ringAudio();
+            //5秒後停止
+            setTimeout(() => {
+              this.stopAudio();
+
+              //次の日の登録
+              const tomorrow = new Date(alarm);
+              tomorrow.setDate(tomorrow.getDate() + 1);
+
+              this.equal(
+                { hour: tomorrow.getHours(), min: tomorrow.getMinutes() },
+                id,
+                alarmManager,
+                tomorrow
+              );
+            }, 10000);
+          }
         }
-      }
-    }, 1000);
+      }, 1000);
+    }
   }
 }
