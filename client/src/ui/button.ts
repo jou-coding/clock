@@ -111,6 +111,9 @@ export function checkedBox(alarmManager: AlarmManager): void {
         const alarm = alarmManager.getAlarm(id);
         if (alarm !== undefined) {
           alarm.toggleActive();
+          if (alarm.getIsActive() === false) {
+            alarm.stopAudio();
+          }
         }
 
         const data = localStorage.getItem(id);
