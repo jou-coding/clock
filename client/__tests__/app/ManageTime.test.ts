@@ -18,4 +18,19 @@ describe("ManageTimeのテスト", () => {
     // 忘れず戻す
     vi.useRealTimers();
   });
+
+  it("clearTime関数がclearIntervalを呼び出す", () => {
+    // clearIntervalをスパイする
+    const spy = vi.spyOn(globalThis, "clearInterval");
+
+    const timer = new ManageTime();
+    // 適当な関数でスタート
+    timer.setTime(() => {});
+    // 停止処理
+    timer.clearTime();
+    // clearIntervalが呼ばれたかを確認
+    expect(spy).toHaveBeenCalled();
+    // 他のテストに影響を与えないように戻す
+    spy.mockRestore();
+  });
 });
