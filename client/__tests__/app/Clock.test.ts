@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 
-import { Clock } from "../src/app/Clock";
+import { Clock } from "../../src/app/Clock";
 
 describe("Clockクラスのテスト", () => {
   it("getTime()が正しい時間を返す", () => {
