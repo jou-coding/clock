@@ -4,16 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>時計アプリ</title>
-    <script type="module" crossorigin src="/clock/assets/index-D55CfdD3.js"></script>
-    <link rel="stylesheet" crossorigin href="/clock/assets/index-6GXlt0ku.css">
+    <link rel="icon" href="/clockIcon02.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script type="module" crossorigin src="/assets/index-CBXixAQx.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DF2_RtPn.css">
   </head>
   <body>
-    <h1>時計アプリ</h1>
-    <div>
-      <span id="hour"></span>:<span id="min"></span>:<span id="second"></span>
-    </div>
-    <div>
-      <button id="btn">隠す</button>
+    <div id="container">
+      <h1 id="header">時計アプリ</h1>
+      <div id="sidebar">
+        <button id="clock-btn">時計</button>
+        <button id="alarm-btn">アラーム</button>
+      </div>
+      <div id="main">
+        <div id="clock-view" style="display: block">
+          <span id="hour"></span>:<span id="min"></span>:<span
+            id="second"
+          ></span>
+        </div>
+        <div id="alarm-view" style="display: none">
+          <div id="alarmlist"></div>
+          <div class="overlay" id="modalOverlay">
+            <div class="modal">
+              <h2>入力フォーム</h2>
+              <label for="hour">時間</label>
+              <input type="number" id="getHour" />
+              <label for="min">分</label>
+              <input type="number" id="getMin" />
+              <button class="submit" id="submit">送信</button>
+              <button class="stop" id="stop">閉じる</button>
+            </div>
+          </div>
+          <button id="btn"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
