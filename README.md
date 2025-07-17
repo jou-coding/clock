@@ -54,8 +54,8 @@ myclock/
 ```
 
 ## 🌐 公開 URL
-[こちら](https://jou-coding.github.io/myclock/)（※別タブで開くことをおすすめします）
 
+このプロジェクトの詳細は、➡️ [こちら](https://jou-coding.github.io/myclock/)（※別タブで開くことをおすすめします）を参照してください。
 
 ## 🧪 テストについて
 
